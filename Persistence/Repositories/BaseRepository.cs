@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Persistence.Repositories;
 
-public abstract class BaseRepository<TEntity> where TEntity : class
+public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
 {
     protected readonly DataContext _context;
     protected readonly DbSet<TEntity> _table;
@@ -30,7 +30,7 @@ public abstract class BaseRepository<TEntity> where TEntity : class
             return new RepositoryResult
             {
                 Success = false,
-                Error = ex.Message 
+                Error = ex.Message
             };
         }
     }
